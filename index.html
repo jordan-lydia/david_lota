@@ -1,326 +1,400 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DLT Services - Direction Générale (David Lota)</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-        .gradient-bg {
-            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
-        }
-        .accent-color {
-            color: #3b82f6;
-        }
-        .btn-primary {
-            background-color: #3b82f6;
-            transition: all 0.3s ease;
-        }
-        .btn-primary:hover {
-            background-color: #2563eb;
-            transform: translateY(-2px);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DLT Services · Cabinet de David Lota</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+    .gradient-bg {
+      background: linear-gradient(135deg, #0b1a3a 0%, #1e3a8a 70%, #1e40af 100%);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 20px 30px -10px rgba(37, 99, 235, 0.4);
+    }
+    .service-card {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .service-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.25);
+    }
+    .service-card a { text-decoration: none; display: block; }
+    .service-image {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: transform 0.5s ease;
+    }
+    .service-card:hover .service-image {
+      transform: scale(1.05);
+    }
+    .hero-image-bg {
+      background-image: url('https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=2070&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center 30%;
+      background-blend-mode: overlay;
+      background-color: rgba(10, 20, 50, 0.5);
+    }
+    .bg-pattern {
+      background-image: radial-gradient(circle at 20% 30%, rgba(59,130,246,0.08) 0%, transparent 60%);
+    }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-800 scroll-smooth">
+<body class="bg-slate-50 text-slate-800">
 
-    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur shadow-sm transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <span class="text-2xl font-extrabold tracking-wider text-blue-900">DLT <span class="text-blue-500">SERVICES</span></span>
-            </div>
-            <nav class="hidden md:flex space-x-8 font-medium text-slate-600">
-                <a href="#accueil" class="hover:text-blue-600 transition">Accueil</a>
-                <a href="#mot-dg" class="hover:text-blue-600 transition">Mot du DG</a>
-                <a href="#vision" class="hover:text-blue-600 transition">Notre Vision</a>
-                <a href="#services" class="hover:text-blue-600 transition">Services & Activités</a>
-                <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
-            </nav>
-            <a href="#contact" class="btn-primary text-white px-6 py-2.5 rounded-full font-semibold shadow-md hidden md:inline-block">Nous Contacter</a>
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-100/30">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <span class="text-2xl font-extrabold tracking-tight text-slate-900">DLT <span class="text-blue-600">SERVICES</span></span>
+        <span class="hidden md:inline-block text-xs font-medium bg-blue-100 text-blue-700 px-3 py-1 rounded-full">Cabinet DG</span>
+      </div>
+      <nav class="hidden md:flex space-x-8 font-medium text-slate-600">
+        <a href="#accueil" class="hover:text-blue-600 transition">Accueil</a>
+        <a href="#mot-dg" class="hover:text-blue-600 transition">Mot du DG</a>
+        <a href="#vision" class="hover:text-blue-600 transition">Vision</a>
+        <a href="#services" class="hover:text-blue-600 transition">Services</a>
+        <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
+      </nav>
+      <a href="#contact" class="btn-primary text-white px-6 py-2.5 rounded-full font-semibold shadow-md hidden lg:inline-block">Nous Écrire</a>
+    </div>
+  </header>
+
+  <!-- ACCUEIL -->
+  <section id="accueil" class="gradient-bg text-white py-20 lg:py-32 relative overflow-hidden hero-image-bg">
+    <div class="absolute inset-0 bg-gradient-to-r from-slate-900/70 via-blue-900/50 to-transparent"></div>
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+      <div class="space-y-6">
+        <span class="inline-block bg-blue-500/30 text-blue-200 px-5 py-1.5 rounded-full text-sm font-semibold tracking-wide backdrop-blur-sm border border-blue-400/20">Cabinet du Directeur Général</span>
+        <h1 class="text-4xl lg:text-6xl font-extrabold leading-tight drop-shadow-md">
+          Bâtir l'avenir de la jeunesse <span class="text-blue-300">congolaise</span>
+        </h1>
+        <p class="text-slate-200 text-lg leading-relaxed max-w-xl">
+          Sous la vision de <strong class="text-white">David Lota</strong>, DLT Services et l'ONG DLT s'engagent activement pour l'encadrement des jeunes citoyens congolais, en particulier ceux du <strong class="text-blue-300">Lualaba</strong>.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+          <a href="#mot-dg" class="btn-primary text-center text-white px-8 py-3.5 rounded-full font-bold shadow-lg">Le Mot du DG</a>
+          <a href="#services" class="border border-white/40 hover:border-white bg-white/10 backdrop-blur-sm text-center px-8 py-3.5 rounded-full font-bold transition hover:bg-white/20">Découvrir nos Activités</a>
         </div>
-    </header>
-
-    <section id="accueil" class="gradient-bg text-white py-20 lg:py-32 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-            <div class="space-y-6 z-10">
-                <span class="bg-blue-500/20 text-blue-400 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase">Cabinet du Directeur Général</span>
-                <h1 class="text-4xl lg:text-6xl font-extrabold leading-tight">
-                    Bâtir l'avenir de la jeunesse congolaise
-                </h1>
-                <p class="text-slate-300 text-lg leading-relaxed">
-                    Sous la vision de **David Lota**, DLT Services et l'ONG DLT s'engagent activement pour l'encadrement des jeunes citoyens congolais en général, et ceux du Lualaba en particulier.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                    <a href="#mot-dg" class="btn-primary text-center text-white px-8 py-3.5 rounded-full font-bold shadow-lg">Le Mot du DG</a>
-                    <a href="#services" class="border border-slate-500 hover:border-white text-center px-8 py-3.5 rounded-full font-bold transition">Découvrir nos Activités</a>
-                </div>
-            </div>
-            <div class="relative flex justify-center z-10">
-                <div class="w-full max-w-md h-96 bg-blue-600/30 rounded-3xl border border-blue-400/20 shadow-2xl flex items-center justify-center p-8 backdrop-blur-sm relative">
-                    <div class="absolute -top-4 -left-4 w-24 h-24 bg-blue-500 rounded-full filter blur-3xl opacity-50"></div>
-                    <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-indigo-500 rounded-full filter blur-3xl opacity-50"></div>
-                    <div class="text-center space-y-4">
-                        <i class="fa-solid fa-handshake-angle text-6xl text-blue-400"></i>
-                        <h3 class="text-2xl font-bold">"Cœurs pour tous"</h3>
-                        <p class="text-sm text-slate-300">La devise qui guide chacune de nos actions sociales et entrepreneuriales.</p>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="relative flex justify-center">
+        <div class="w-full max-w-md aspect-square rounded-3xl bg-blue-600/20 border border-blue-400/30 shadow-2xl flex items-center justify-center p-8 backdrop-blur-sm relative overflow-hidden">
+          <div class="absolute -top-10 -left-10 w-40 h-40 bg-blue-500 rounded-full filter blur-3xl opacity-40"></div>
+          <div class="absolute -bottom-10 -right-10 w-48 h-48 bg-indigo-500 rounded-full filter blur-3xl opacity-40"></div>
+          <div class="text-center space-y-4 z-10">
+            <i class="fa-solid fa-handshake-angle text-7xl text-blue-300 drop-shadow-lg"></i>
+            <h3 class="text-3xl font-bold text-white">"Cœurs pour tous"</h3>
+            <p class="text-sm text-blue-200/80">La devise qui guide chacune de nos actions sociales et entrepreneuriales.</p>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section id="mot-dg" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-5 relative">
-                    <div class="w-full h-[500px] bg-slate-200 rounded-3xl shadow-xl overflow-hidden relative flex items-center justify-center border border-slate-100">
-                        <div class="text-center p-6">
-                            <i class="fa-regular fa-user text-6xl text-slate-400 mb-4"></i>
-                            <p class="text-slate-500 font-medium">Photo officielle de David Lota</p>
-                            <span class="text-xs text-slate-400">Directeur Général & Fondateur</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:col-span-7 space-y-6">
-                    <div class="w-12 h-1 bg-blue-600"></div>
-                    <span class="text-blue-600 font-bold uppercase tracking-wider text-sm">Le Mot du DG</span>
-                    <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900">DAVID LOTA</h2>
-                    <h4 class="text-xl font-semibold text-blue-500">Directeur Général de DLT Services & Promoteur de l'ONG DLT</h4>
-                    
-                    <p class="text-slate-600 leading-relaxed text-lg">
-                        "L'avenir de la République Démocratique du Congo repose sur les épaules de sa jeunesse. C'est avec cette profonde conviction que nous avons mis en place la structure **DLT (David Lota)**. Notre objectif principal est l'encadrement, l'accompagnement et l'autonomisation des jeunes citoyens congolais en général, et spécifiquement de ceux de la province du **Lualaba**."
-                    </p>
-                    <p class="text-slate-600 leading-relaxed text-lg">
-                        "À travers nos différents pôles d'activités commerciales et notre ONG animée par notre devise **« Cœurs pour tous »**, nous offrons des opportunités concrètes et un espace d'épanouissement pour transformer les talents locaux en forces motrices du développement national."
-                    </p>
-                    <div class="pt-4">
-                        <span class="font-bold text-slate-950 text-xl block">David Lota</span>
-                        <span class="text-sm text-slate-500 block">Directeur Général</span>
-                    </div>
-                </div>
+  <!-- MOT DU DG -->
+  <section id="mot-dg" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-5 relative">
+          <div class="w-full h-[500px] bg-gradient-to-br from-slate-100 to-slate-200 rounded-3xl shadow-xl overflow-hidden relative flex items-center justify-center border border-slate-200">
+            <div class="text-center p-8">
+              <div class="w-32 h-32 bg-blue-600/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i class="fa-regular fa-user text-6xl text-blue-700"></i>
+              </div>
+              <p class="text-slate-700 font-medium text-lg">David Lota</p>
+              <p class="text-slate-500 text-sm">Directeur Général & Fondateur</p>
+              <div class="mt-4 flex justify-center space-x-3 text-slate-400">
+                <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                <span class="w-2 h-2 bg-blue-400 rounded-full"></span>
+                <span class="w-2 h-2 bg-blue-300 rounded-full"></span>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
-
-    <section id="vision" class="py-20 bg-slate-100">
-        <div class="max-w-7xl mx-auto px-6 text-center max-w-3xl mb-16">
-            <span class="text-blue-600 font-bold uppercase tracking-wider text-sm">Vision Nationale & Régionale</span>
-            <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mt-2">Notre Engagement pour le Lualaba</h2>
-            <p class="text-slate-600 mt-4">
-                Découvrez comment nous canalisons l'énergie de la jeunesse pour créer un impact social et économique durable.
-            </p>
+        <div class="lg:col-span-7 space-y-6">
+          <div class="w-12 h-1 bg-blue-600 rounded-full"></div>
+          <span class="text-blue-600 font-bold uppercase tracking-wider text-sm">Le Mot du DG</span>
+          <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900">DAVID LOTA</h2>
+          <h4 class="text-xl font-semibold text-blue-500">Directeur Général de DLT Services & Promoteur de l'ONG DLT</h4>
+          <div class="space-y-4 text-slate-600 leading-relaxed text-lg">
+            <p>"L'avenir de la République Démocratique du Congo repose sur les épaules de sa jeunesse. C'est avec cette profonde conviction que nous avons mis en place la structure <strong>DLT (David Lota)</strong>. Notre objectif principal est l'encadrement, l'accompagnement et l'autonomisation des jeunes citoyens congolais en général, et spécifiquement de ceux de la province du <strong>Lualaba</strong>."</p>
+            <p>"À travers nos différents pôles d'activités commerciales et notre ONG animée par notre devise <strong>« Cœurs pour tous »</strong>, nous offrons des opportunités concrètes et un espace d'épanouissement pour transformer les talents locaux en forces motrices du développement national."</p>
+          </div>
+          <div class="pt-4 border-t border-slate-100">
+            <span class="font-bold text-slate-950 text-xl block">David Lota</span>
+            <span class="text-sm text-slate-500 block">Directeur Général</span>
+          </div>
         </div>
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8">
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 space-y-4">
-                <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 text-xl font-bold">01</div>
-                <h3 class="text-xl font-bold text-slate-900">Encadrement Civique</h3>
-                <p class="text-slate-600">Promouvoir les valeurs de citoyenneté, d'éthique et d'esprit entrepreneurial auprès des jeunes congolais.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION -->
+  <section id="vision" class="py-20 bg-slate-100/80 bg-pattern">
+    <div class="max-w-7xl mx-auto px-6 text-center max-w-3xl mb-16">
+      <span class="text-blue-600 font-bold uppercase tracking-wider text-sm">Vision Nationale & Régionale</span>
+      <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mt-2">Notre Engagement pour le Lualaba</h2>
+      <p class="text-slate-600 mt-4">Nous canalisons l'énergie de la jeunesse pour créer un impact social et économique durable.</p>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+      <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 space-y-4 hover:shadow-lg transition">
+        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 text-xl font-bold">01</div>
+        <h3 class="text-xl font-bold text-slate-900">Encadrement Civique</h3>
+        <p class="text-slate-600">Promouvoir les valeurs de citoyenneté, d'éthique et d'esprit entrepreneurial auprès des jeunes congolais.</p>
+      </div>
+      <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 space-y-4 hover:shadow-lg transition">
+        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 text-xl font-bold">02</div>
+        <h3 class="text-xl font-bold text-slate-900">Opportunités Locales</h3>
+        <p class="text-slate-600">Créer des emplois et des formations pratiques au sein de la province dynamique du Lualaba.</p>
+      </div>
+      <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 space-y-4 hover:shadow-lg transition">
+        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 text-xl font-bold">03</div>
+        <h3 class="text-xl font-bold text-slate-900">Action Humanitaire</h3>
+        <p class="text-slate-600">Apporter un soutien concret aux plus démunis à travers l'ONG DLT et son action humanitaire élargie.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES avec IMAGES -->
+  <section id="services" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6 text-center max-w-3xl mb-16">
+      <span class="text-blue-600 font-bold uppercase tracking-wider text-sm">Écosystème DLT</span>
+      <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mt-2">Nos Services & Activités</h2>
+      <p class="text-slate-600 mt-4">Cliquez sur une carte pour découvrir chaque service en détail.</p>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- DLT PICTURE -->
+      <div class="service-card bg-slate-50 border border-slate-200 rounded-3xl p-6 hover:shadow-2xl relative group">
+        <a href="#service-picture" onclick="event.preventDefault(); alert('Page DLT PICTURE – Présentation détaillée.')">
+          <img src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?q=80&w=2070&auto=format&fit=crop" alt="DLT PICTURE" class="service-image mb-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-xl shadow-lg">
+                <i class="fa-solid fa-camera"></i>
+              </div>
+              <span class="text-xs font-medium text-blue-600 bg-blue-100 px-3 py-1 rounded-full">Production</span>
             </div>
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 space-y-4">
-                <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 text-xl font-bold">02</div>
-                <h3 class="text-xl font-bold text-slate-900">Opportunités Locales</h3>
-                <p class="text-slate-600">Créer des emplois et des formations pratiques au sein de la province dynamique du Lualaba.</p>
+            <h3 class="text-xl font-bold text-slate-950">DLT PICTURE</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">Production audiovisuelle haut de gamme, couverture d'événements, photographie et valorisation de l'image de marque.</p>
+            <div class="pt-2 text-blue-600 font-semibold text-sm flex items-center">
+              <span>Découvrir</span> <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-2 transition"></i>
             </div>
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 space-y-4">
-                <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 text-xl font-bold">03</div>
-                <h3 class="text-xl font-bold text-slate-900">Action Humanitaire</h3>
-                <p class="text-slate-600">Apporter un soutien concret aux plus démunis à travers l'ONG DLT et son action humanitaire élargie.</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- DLT BOUTIQUE -->
+      <div class="service-card bg-slate-50 border border-slate-200 rounded-3xl p-6 hover:shadow-2xl relative group">
+        <a href="#service-boutique" onclick="event.preventDefault(); alert('Page DLT BOUTIQUE – Présentation détaillée.')">
+          <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?q=80&w=2070&auto=format&fit=crop" alt="DLT BOUTIQUE" class="service-image mb-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="w-12 h-12 bg-indigo-600 text-white rounded-2xl flex items-center justify-center text-xl shadow-lg">
+                <i class="fa-solid fa-shop"></i>
+              </div>
+              <span class="text-xs font-medium text-indigo-600 bg-indigo-100 px-3 py-1 rounded-full">Commerce</span>
             </div>
+            <h3 class="text-xl font-bold text-slate-950">DLT BOUTIQUE</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">Espace de commerce et de distribution moderne offrant des articles sélectionnés pour la population du Lualaba.</p>
+            <div class="pt-2 text-indigo-600 font-semibold text-sm flex items-center">
+              <span>Découvrir</span> <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-2 transition"></i>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- DLT CANAL (Lota+ Tv) -->
+      <div class="service-card bg-slate-50 border border-slate-200 rounded-3xl p-6 hover:shadow-2xl relative group">
+        <a href="#service-canal" onclick="event.preventDefault(); alert('Page DLT CANAL – Présentation détaillée.')">
+          <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=2070&auto=format&fit=crop" alt="DLT CANAL" class="service-image mb-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="w-12 h-12 bg-red-600 text-white rounded-2xl flex items-center justify-center text-xl shadow-lg">
+                <i class="fa-solid fa-tv"></i>
+              </div>
+              <span class="text-xs font-medium text-red-600 bg-red-100 px-3 py-1 rounded-full">Média</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-950">DLT CANAL <span class="text-sm font-normal text-slate-500">(Lota+ Tv)</span></h3>
+            <p class="text-slate-600 text-sm leading-relaxed">Notre média d'information, de divertissement et de sensibilisation pour donner de la voix aux initiatives de la région.</p>
+            <div class="pt-2 text-red-600 font-semibold text-sm flex items-center">
+              <span>Découvrir</span> <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-2 transition"></i>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- ONG DLT -->
+      <div class="service-card bg-slate-50 border-2 border-blue-200 rounded-3xl p-6 hover:shadow-2xl relative group overflow-hidden">
+        <div class="absolute top-0 right-0 bg-emerald-600 text-white text-[10px] uppercase font-bold px-4 py-1 rounded-bl-xl z-10">Social</div>
+        <a href="#service-ong" onclick="event.preventDefault(); alert('Page ONG DLT – Présentation détaillée.')">
+          <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop" alt="ONG DLT" class="service-image mb-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="w-12 h-12 bg-emerald-600 text-white rounded-2xl flex items-center justify-center text-xl shadow-lg">
+                <i class="fa-solid fa-hand-holding-heart"></i>
+              </div>
+              <span class="text-xs font-medium text-emerald-600 bg-emerald-100 px-3 py-1 rounded-full">Humanitaire</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-950">ONG DLT</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">L'expression sociale de notre vision. Actions caritatives, appuis scolaires et aide aux communautés vulnérables.</p>
+            <span class="block text-emerald-600 font-bold text-xs italic">« Cœurs pour tous »</span>
+            <div class="pt-2 text-emerald-600 font-semibold text-sm flex items-center">
+              <span>Découvrir</span> <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-2 transition"></i>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-20 bg-slate-100/80">
+    <div class="max-w-4xl mx-auto px-6 bg-white p-10 lg:p-14 rounded-[2.5rem] shadow-xl border border-slate-200">
+      <div class="text-center space-y-3 mb-10">
+        <span class="text-blue-600 font-bold uppercase tracking-wider text-sm">Nous contacter</span>
+        <h2 class="text-3xl font-extrabold text-slate-900">Écrivez au Cabinet de DLT Services</h2>
+        <p class="text-slate-500">Posez vos questions ou soumettez votre dossier d'encadrement.</p>
+      </div>
+
+      <form id="contactForm" class="space-y-6">
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-2">Nom Complet</label>
+            <input type="text" id="name" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition" placeholder="Votre nom">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-2">Adresse Email</label>
+            <input type="email" id="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition" placeholder="Votre email">
+          </div>
         </div>
-    </section>
-
-    <section id="services" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-6 text-center max-w-3xl mb-16">
-            <span class="text-blue-600 font-bold uppercase tracking-wider text-sm">Écosystème DLT</span>
-            <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 mt-2">Nos Services & Activités</h2>
-            <p class="text-slate-600 mt-4">
-                Un ensemble de structures diversifiées orientées vers les services, les médias, le commerce et l'humanitaire.
-            </p>
+        <div>
+          <label class="block text-sm font-semibold text-slate-700 mb-2">Sujet / Motif de demande</label>
+          <input type="text" id="subject" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition" placeholder="Ex: Projet d'encadrement, Partenariat...">
         </div>
-
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="bg-slate-50 border border-slate-100 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-                <div class="space-y-4">
-                    <div class="w-14 h-14 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-camera"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-slate-950">DLT PICTURE</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        Production audiovisuelle haut de gamme, couverture d'événements, photographie et valorisation de l'image de marque de nos partenaires.
-                    </p>
-                </div>
-                <span class="text-blue-600 font-semibold text-sm mt-6 inline-block">En savoir plus <i class="fa-solid fa-arrow-right ml-1"></i></span>
-            </div>
-
-            <div class="bg-slate-50 border border-slate-100 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-                <div class="space-y-4">
-                    <div class="w-14 h-14 bg-indigo-600 text-white rounded-2xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-shop"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-slate-950">DLT BOUTIQUE</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        Espace de commerce et de distribution moderne offrant des articles sélectionnés répondant aux besoins de la population locale du Lualaba.
-                    </p>
-                </div>
-                <span class="text-indigo-600 font-semibold text-sm mt-6 inline-block">En savoir plus <i class="fa-solid fa-arrow-right ml-1"></i></span>
-            </div>
-
-            <div class="bg-slate-50 border border-slate-100 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-                <div class="space-y-4">
-                    <div class="w-14 h-14 bg-red-600 text-white rounded-2xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-tv"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-slate-950">DLT CANAL <span class="text-sm font-normal text-slate-500">(Lota+ Tv)</span></h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        Notre média d'information, de divertissement et de sensibilisation pour donner de la voix et de la visibilité aux initiatives de la région.
-                    </p>
-                </div>
-                <span class="text-red-600 font-semibold text-sm mt-6 inline-block">En savoir plus <i class="fa-solid fa-arrow-right ml-1"></i></span>
-            </div>
-
-            <div class="bg-slate-50 border border-blue-200 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
-                <div class="absolute top-0 right-0 bg-blue-600 text-white text-[10px] uppercase font-bold px-4 py-1 rounded-bl-xl">Social</div>
-                <div class="space-y-4">
-                    <div class="w-14 h-14 bg-emerald-600 text-white rounded-2xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-hand-holding-heart"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-slate-950">ONG DLT</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        L'expression sociale de notre vision. Actions caritatives, appuis scolaires et aide aux communautés vulnérables.
-                    </p>
-                    <span class="block text-emerald-600 font-bold text-xs italic">« Cœurs pour tous »</span>
-                </div>
-                <span class="text-emerald-600 font-semibold text-sm mt-6 inline-block">En savoir plus <i class="fa-solid fa-arrow-right ml-1"></i></span>
-            </div>
+        <div>
+          <label class="block text-sm font-semibold text-slate-700 mb-2">Message</label>
+          <textarea id="message" rows="5" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition" placeholder="Détaillez votre message..."></textarea>
         </div>
-    </section>
+        <button type="submit" class="w-full btn-primary text-white py-4 rounded-xl font-bold shadow-lg text-lg flex items-center justify-center space-x-2">
+          <i class="fa-regular fa-paper-plane"></i>
+          <span>Envoyer le Message</span>
+        </button>
+      </form>
 
-    <section id="contact" class="py-20 bg-slate-100">
-        <div class="max-w-4xl mx-auto px-6 bg-white p-10 lg:p-14 rounded-[2.5rem] shadow-xl border border-slate-100">
-            <div class="text-center space-y-3 mb-10">
-                <span class="text-blue-600 font-bold uppercase tracking-wider text-sm">Nous contacter</span>
-                <h2 class="text-3xl font-extrabold text-slate-900">Écrivez au Cabinet de DLT Services</h2>
-                <p class="text-slate-500">Posez vos questions ou soumettez votre dossier d'encadrement.</p>
-            </div>
+      <div id="statusMessage" class="hidden mt-6 p-4 rounded-xl text-center font-semibold"></div>
 
-            <form id="contactForm" class="space-y-6">
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-sm font-semibold text-slate-700 mb-2">Nom Complet</label>
-                        <input type="text" id="name" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition" placeholder="Votre nom">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-semibold text-slate-700 mb-2">Adresse Email</label>
-                        <input type="email" id="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition" placeholder="Votre email">
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-2">Sujet / Motif de demande</label>
-                    <input type="text" id="subject" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition" placeholder="Ex: Projet d'encadrement, Partenariat...">
-                </div>
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-2">Message</label>
-                    <textarea id="message" rows="5" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition" placeholder="Détaillez votre message..."></textarea>
-                </div>
-                <button type="submit" class="w-full btn-primary text-white py-4 rounded-xl font-bold shadow-lg text-lg flex items-center justify-center space-x-2">
-                    <i class="fa-regular fa-paper-plane"></i>
-                    <span>Envoyer le Message</span>
-                </button>
-            </form>
-
-            <div id="statusMessage" class="hidden mt-6 p-4 rounded-xl text-center font-semibold"></div>
+      <!-- Coordonnées mises à jour -->
+      <div class="mt-10 pt-8 border-t border-slate-200 grid md:grid-cols-3 gap-6 text-sm">
+        <div class="flex items-center space-x-3 text-slate-700">
+          <i class="fa-solid fa-location-dot text-blue-600 w-5"></i>
+          <span>Kolwezi, Province du Lualaba, RDC</span>
         </div>
-    </section>
-
-    <footer class="bg-slate-950 text-white py-12">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8 border-b border-slate-800 pb-12 mb-8">
-            <div class="space-y-4">
-                <span class="text-2xl font-extrabold tracking-wider text-white">DLT <span class="text-blue-500">SERVICES</span></span>
-                <p class="text-slate-400 text-sm">
-                    Initiative sous le leadership de **David Lota** pour l'émergence sociale et commerciale de la province du Lualaba.
-                </p>
-            </div>
-            <div>
-                <h4 class="font-bold text-lg mb-4 text-blue-400">Liens Rapides</h4>
-                <ul class="space-y-2 text-sm text-slate-400">
-                    <li><a href="#accueil" class="hover:underline">Accueil</a></li>
-                    <li><a href="#mot-dg" class="hover:underline">Le Mot du DG</a></li>
-                    <li><a href="#services" class="hover:underline">Nos Activités</a></li>
-                    <li><a href="#contact" class="hover:underline">Contact</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-bold text-lg mb-4 text-blue-400">Contact & Siège</h4>
-                <ul class="space-y-2 text-sm text-slate-400">
-                    <li><i class="fa-solid fa-location-dot mr-2"></i> Kolwezi, Province du Lualaba, RDC</li>
-                    <li><i class="fa-solid fa-envelope mr-2"></i> contact@dltservices-rdc.com</li>
-                    <li><i class="fa-solid fa-phone mr-2"></i> +243 (0) 000 000 000</li>
-                </ul>
-            </div>
+        <div class="flex items-center space-x-3 text-slate-700">
+          <i class="fa-solid fa-envelope text-blue-600 w-5"></i>
+          <a href="mailto:davidlota@gmail.com" class="hover:text-blue-600">davidlota@gmail.com</a>
         </div>
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
-            <p>&copy; 2026 DLT Services - Tous droits réservés.</p>
-            <p>Devise : <span class="italic text-slate-400">« Cœurs pour tous »</span></p>
+        <div class="flex items-center space-x-3 text-slate-700">
+          <i class="fa-solid fa-phone text-blue-600 w-5"></i>
+          <a href="tel:+243999333819" class="hover:text-blue-600">+243 999 333 819</a>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  <!-- FOOTER -->
+  <footer class="bg-slate-950 text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8 border-b border-slate-800 pb-12 mb-8">
+      <div class="space-y-4">
+        <span class="text-2xl font-extrabold tracking-wider text-white">DLT <span class="text-blue-500">SERVICES</span></span>
+        <p class="text-slate-400 text-sm max-w-xs">Initiative sous le leadership de <strong class="text-white">David Lota</strong> pour l'émergence sociale et commerciale de la province du Lualaba.</p>
+        <div class="flex space-x-4 text-slate-500">
+          <a href="#" class="hover:text-blue-400 transition"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" class="hover:text-blue-400 transition"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="hover:text-blue-400 transition"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-bold text-lg mb-4 text-blue-400">Liens Rapides</h4>
+        <ul class="space-y-2 text-sm text-slate-400">
+          <li><a href="#accueil" class="hover:underline">Accueil</a></li>
+          <li><a href="#mot-dg" class="hover:underline">Le Mot du DG</a></li>
+          <li><a href="#services" class="hover:underline">Nos Activités</a></li>
+          <li><a href="#contact" class="hover:underline">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-lg mb-4 text-blue-400">Contact & Siège</h4>
+        <ul class="space-y-3 text-sm text-slate-400">
+          <li><i class="fa-solid fa-location-dot mr-2 text-blue-500"></i> Kolwezi, Lualaba, RDC</li>
+          <li><i class="fa-solid fa-envelope mr-2 text-blue-500"></i> davidlota@gmail.com</li>
+          <li><i class="fa-solid fa-phone mr-2 text-blue-500"></i> +243 999 333 819</li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
+      <p>&copy; 2026 DLT Services – Tous droits réservés.</p>
+      <p>Devise : <span class="italic text-slate-400">« Cœurs pour tous »</span></p>
+    </div>
+  </footer>
 
-    <script>
-        // Configuration de votre projet Firebase
-        // Remplacer avec vos propres clés Firebase disponibles sur votre console Firebase
-        const firebaseConfig = {
-            apiKey: "VOTRE_API_KEY",
-            authDomain: "votre-projet.firebaseapp.com",
-            databaseURL: "https://votre-projet-default-rtdb.firebaseio.com", // Base de données temps réel nécessaire
-            projectId: "votre-projet",
-            storageBucket: "votre-projet.appspot.com",
-            messagingSenderId: "VOTRE_SENDER_ID",
-            appId: "VOTRE_APP_ID"
-        };
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "VOTRE_API_KEY",
+      authDomain: "votre-projet.firebaseapp.com",
+      databaseURL: "https://votre-projet-default-rtdb.firebaseio.com",
+      projectId: "votre-projet",
+      storageBucket: "votre-projet.appspot.com",
+      messagingSenderId: "VOTRE_SENDER_ID",
+      appId: "VOTRE_APP_ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
 
-        // Initialiser Firebase
-        firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
+    const contactForm = document.getElementById('contactForm');
+    const statusMessage = document.getElementById('statusMessage');
 
-        // Gestion de la soumission du formulaire
-        const contactForm = document.getElementById('contactForm');
-        const statusMessage = document.getElementById('statusMessage');
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
 
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-
-            // Envoyer à Firebase (Database temps réel dans la table 'messages')
-            const newMessageRef = database.ref('messages').push();
-            newMessageRef.set({
-                nom: name,
-                email: email,
-                sujet: subject,
-                message: message,
-                date: new Date().toISOString()
-            }, function(error) {
-                statusMessage.classList.remove('hidden');
-                if (error) {
-                    statusMessage.className = "mt-6 p-4 rounded-xl text-center font-semibold bg-red-100 text-red-700";
-                    statusMessage.innerText = "Une erreur est survenue lors de l'envoi. Veuillez réessayer.";
-                } else {
-                    statusMessage.className = "mt-6 p-4 rounded-xl text-center font-semibold bg-green-100 text-green-700";
-                    statusMessage.innerText = "Votre message a été transmis avec succès au Cabinet de David Lota !";
-                    contactForm.reset();
-                }
-            });
-        });
-    </script>
+      const newMessageRef = database.ref('messages').push();
+      newMessageRef.set({
+        nom: name,
+        email: email,
+        sujet: subject,
+        message: message,
+        date: new Date().toISOString()
+      }, function(error) {
+        statusMessage.classList.remove('hidden');
+        if (error) {
+          statusMessage.className = "mt-6 p-4 rounded-xl text-center font-semibold bg-red-100 text-red-700";
+          statusMessage.innerText = "Une erreur est survenue. Veuillez réessayer.";
+        } else {
+          statusMessage.className = "mt-6 p-4 rounded-xl text-center font-semibold bg-green-100 text-green-700";
+          statusMessage.innerText = "✅ Votre message a été transmis au Cabinet de David Lota !";
+          contactForm.reset();
+        }
+      });
+    });
+  </script>
 </body>
 </html>
